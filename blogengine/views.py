@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.shortcuts import redirect, reverse
 
-def hello(request):
-    return HttpResponse('<h1>Hello world</h1>')
+def blog_redirect(request):
+    return redirect('blog/')
