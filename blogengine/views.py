@@ -1,4 +1,4 @@
-from django.shortcuts import redirect, reverse
+from django.shortcuts import redirect
 
 def blog_redirect(request):
-    return redirect('blog/')
+    return redirect('posts_list_url', permanent=True)

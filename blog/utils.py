@@ -7,7 +7,9 @@ class ObjectDetailMixin:
 
     def get(self, request, slug):
         obj = get_object_or_404(self.model, slug__iexact=slug)
-        return render(request, self.template, {self.model.__name__.lower(): obj})
+        return render(request,
+                      self.template,
+                      {self.model.__name__.lower(): obj, 'admin_obj': obj, 'detail_page': True})
 
 
 class ObjectCreateMixin:
@@ -58,7 +60,9 @@ class ObjectDeleteMixin():
 
     def get(self, request, slug):
         obj = self.model.objects.get(slug__iexact=slug)
-        return render(request, 'blog/obj_delete.html', {'obj': obj, 'model': self.model.__name__.lower()})
+        return render(request,
+                      'blog/obj_delete.html',
+                      {'obj': obj, 'model': self.model.__name__.lower()})
 
     def post(self, request, slug):
         obj = self.model.objects.get(slug__iexact=slug)
